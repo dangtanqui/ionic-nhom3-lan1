@@ -1,0 +1,38 @@
+<ion-list>
+  <ion-list-header color="primary">
+    <ion-label>Thông tin sinh viên</ion-label>
+  </ion-list-header>
+  <ion-item>
+    <ion-icon name="key-outline" slot="start"></ion-icon>
+    <ion-label>Mã sinh viên:</ion-label>
+    <ion-input [(ngModel)]="newStudent.masv" type="text" disabled="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="person-outline" slot="start"></ion-icon>
+    <ion-label>Tên sinh viên:</ion-label>
+    <ion-input [(ngModel)]="newStudent.hoTen" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="calendar-outline" slot="start"></ion-icon>
+    <ion-label>Ngày sinh:</ion-label>
+    <ion-datetime placeholder="Chọn ngày..." [value]="newStudent.ngaySinh | date: 'fullDate'" (ionChange)="thayDoiNgaySinh($event)"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="male-female-outline" slot="start"></ion-icon>
+    <ion-label>Giới tính:</ion-label>
+    <ion-select [value]="newStudent.gioiTinh" (ionChange)="thayDoiGioiTinh($event)">
+      <ion-select-option value="nam">Nam</ion-select-option>
+      <ion-select-option value="nữ">Nữ</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-icon name="school-outline" slot="start"></ion-icon>
+    <ion-label>Điểm:</ion-label>
+    <ion-range min="0" max="100" step="1" snaps="true" ticks="false" color="tertiary" debounce="100"
+      [value]="newStudent.diemtb * 10" (ionChange)="thayDoiDiemtb($event)">
+      <ion-label slot="start">{{ newStudent.diemtb }}</ion-label>
+    </ion-range>
+  </ion-item>
+  <ion-button class="ion-margin" expand="block" size="small" (click)="updateStudent()" color="success">Cập nhật</ion-button>
+  <ion-button class="ion-margin" expand="block" size="small" (click)="dismiss()" color="danger">Đóng</ion-button>
+</ion-list>

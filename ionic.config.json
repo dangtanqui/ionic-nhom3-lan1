@@ -1,0 +1,7 @@
+{
+  "name": "crud-student",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Quản lý lớp
+    </ion-title>
+    <ion-buttons>
+      <ion-menu-button id="main"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let lop of lops">
+    <ion-card-header>   
+      <ion-item lines="none">
+        <ion-label class="title">
+          <a (click)="updateLop(lop)">{{ lop.tenLop }}</a>
+        </ion-label>
+        <ion-icon name="trash" color="danger" slot="end" (click)="deleteLop(lop)"></ion-icon>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item lines="none" *ngFor="let sinhVien of lop.danhSachSinhVien; let i = index">
+          <ion-label>
+            <a (click)="showInfoStudent($event, sinhVien)">{{ i + 1 }}. {{ sinhVien.hoTen }}</a>
+          </ion-label>
+          <ion-icon name="person-remove-outline" color="danger" slot="end" (click)="deleteStudent(lop, sinhVien)"></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-button lines="none" (click)="addStudent(lop)" fill="outline" color="success">
+        <ion-icon name="person-add-outline" slot="start"></ion-icon>
+        <ion-label>Thêm sinh viên</ion-label>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+    
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addLop()" color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

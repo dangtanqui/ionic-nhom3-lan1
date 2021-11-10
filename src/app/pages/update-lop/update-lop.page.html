@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Cập nhật lớp
+    </ion-title>
+    <ion-icon name="close" slot="end" size="large" class="ion-padding" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Mã lớp:</ion-label>
+        <ion-input [(ngModel)]="lop.maLop" disabled="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tên lớp:</ion-label>
+        <ion-input [(ngModel)]="lop.tenLop"></ion-input>
+      </ion-item>
+      <ion-button class="ion-margin" expand="block" (click)="updateLop()" color="warning">Cập nhật</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

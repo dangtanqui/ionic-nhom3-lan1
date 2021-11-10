@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Thêm sinh viên
+    </ion-title>
+    <ion-icon name="close" slot="end" size="large" class="ion-padding" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Thêm sinh viên vào lớp {{ lop.tenLop }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Mã sinh viên</ion-label>
+        <ion-input [(ngModel)]="student.masv" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Tên sinh viên</ion-label>
+        <ion-input [(ngModel)]="student.hoTen" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        <ion-label>Ngày sinh</ion-label>
+        <ion-datetime [(ngModel)]="student.ngaySinh" displayFormat="D/M/YYYY" placeholder="Chọn ngày..."></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="male-female-outline" slot="start"></ion-icon>
+        <ion-label>Giới tính</ion-label>
+        <ion-select [(ngModel)]="student.gioiTinh" placeholder="Chọn giới tính...">
+          <ion-select-option value="nam">Nam</ion-select-option>
+          <ion-select-option value="nữ">Nữ</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="school-outline" slot="start"></ion-icon>
+        <ion-label>Điểm</ion-label>
+        <ion-range min="0" max="100" step="1" snaps="true" ticks="false" color="tertiary" debounce="100"
+          [value]="student.diemtb * 10" (ionChange)="thayDoiDiemtb($event)">
+          <ion-label slot="start">{{ student.diemtb }}</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-button class="ion-margin" expand="block" (click)="addStudent()" color="success">Thêm</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
